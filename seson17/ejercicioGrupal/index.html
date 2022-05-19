@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordenar los números</title>
+  <style>
+    html {
+      font-family: sans-serif;
+    }
+
+    body {
+      width: 50%;
+      max-width: 800px;
+      min-width: 480px;
+      margin: 0 auto;
+    }
+
+    .lastResult {
+      color: white;
+      padding: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Ordenar los números</h1>
+  <p>Por favor ingrese cuatro números.</p>
+
+  <div class="form">
+    <label for="guessField">Número uno: </label>
+    <input type="text" id="num1" class="guessField"><br> <br>
+    <label for="guessField">Número dos: </label>
+    <input type="text" id="num2" class="guessField"><br> <br>
+    <label for="guessField">Número tres: </label>
+    <input type="text" id="num3" class="guessField"><br> <br>
+    <label for="guessField">Número cuatro: </label>
+    <input type="text" id="num4" class="guessField"><br> <br> <br>
+    <input type="submit" value="Ordenar" class="orderSubmit">
+  </div>
+  <div class="resultParas">
+    <p class="numerosordenados"></p>
+    <p class="lastResult"></p>
+    <p class="lowOrHi"></p>
+  </div>
+  <script>
+
+    const ordSubmit = document.querySelector('.orderSubmit');
+    function ordenalo() {
+      const n1 = Number(document.querySelector('#num1').value);
+      const n2 = Number(document.querySelector('#num2').value);
+      const n3 = Number(document.querySelector('#num3').value);
+      const n4 = Number(document.querySelector('#num4').value);
+
+      var lista = [n1, n2, n3, n4];
+      var n, i, k, aux;
+      n = lista.length;
+      //https://3con14.biz/js/tips-and-tricks/17-ordenamiento-por-burbuja.html#demo
+      // Algoritmo de burbuja
+      for (k = 1; k < n; k++) {
+        for (i = 0; i < (n - k); i++) {
+          if (lista[i] > lista[i + 1]) {
+            aux = lista[i];
+            lista[i] = lista[i + 1];
+            lista[i + 1] = aux;
+          }
+        }
+      }
+      const numerosordenados = document.querySelector('.numerosordenados')
+      numerosordenados.textContent = 'Probando: ' + lista;
+    }
+    ordSubmit.addEventListener('click', ordenalo);
+
+  </script>
+</body>
+
+</html>
